@@ -1,5 +1,5 @@
-# Real estate investments company website
-Project is a stopwatch where you can pause, stop and restart time. In archive you are able to see your latest results. What is more, you can change theme colors in a project. I build this project to practice HTML, CSS, SASS using BEM technology, but the most JavaScript. Click [here](https://martinafm.github.io/stopwatch/) link to see it live.
+# Application - stopwatch
+Project is a stopwatch where you can pause, stop and restart time. In archive you are able to see your latest results. What is more, you can change theme colors in a project. I build this project to practice HTML, CSS, SASS using BEM technology, but the most JavaScript. Click [here](https://martinafm.github.io/Stopwatch/) link to see it live.
 
 
 ## Table of Contents
