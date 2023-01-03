@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOPWATCH</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+    <script src="https://kit.fontawesome.com/cd4426d543.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+        <div class="watch">
+            <p class="watch__info">
+                <i class="fa-solid fa-circle-info"></i>
+            </p>
+            <p class="watch__color">
+                <i class="fa-solid fa-palette"></i>
+            </p>
+            <div class="watch__themes">
+                <div class="watch__theme watch__theme--default"></div>
+                <div class="watch__theme watch__theme--one"></div>
+                <div class="watch__theme watch__theme--two"></div>
+                <div class="watch__theme watch__theme--three"></div>
+                <div class="watch__theme watch__theme--four"></div>
+            </div>
+            <p class="watch__time">00:00</p>
+            <p class="watch__time--last">0:00</p>
+            <div class="watch__btn-box">
+                <button class="watch__btn play"><i class="watch__icon fa-solid fa-circle-play"></i></button>
+                <button class="watch__btn pause"><i
+                        class="watch__icon fa-solid fa-circle-pause"></i></button>
+                <button class="watch__btn stop"><i class="watch__icon fa-solid fa-circle-stop"></i></button>
+                <button class="watch__btn reset"><i
+                        class="watch__icon fa-solid fa-circle-xmark"></i></button>
+                <button class="watch__btn archive">archive</button>
+            </div>
+            <ul class="time-list">
+            </ul>
+        </div>
+
+
+        <div class="modal--shadow">
+            <div class="modal">
+                <h3 class="modal__title">Instruction:</h3>
+                <p class="modal__text"><i class="modal__icon fa-solid fa-circle-play"></i> - start stopwatch</p>
+                <p class="modal__text"><i class="modal__icon fa-solid fa-circle-pause"></i> - pause stopwatch, you can continue timing from the moment you stop it  </p>
+                <p class="modal__text"><i class="modal__icon fa-solid fa-circle-stop"></i> - stop, time will reset, but you will see your last time </p>
+                <p class="modal__text"><i class="modal__icon fa-solid fa-circle-xmark"></i> - delete all data (includes archive)</p>
+                <p class="modal__text"><strong>archive</strong> - see previous results</p>
+                <button class="modal__btn--close">Close</button>
+            </div>
+        </div>
+
+
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>

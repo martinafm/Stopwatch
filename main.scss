@@ -1,0 +1,321 @@
+:root {
+	--dark: #22223b;
+	--middle: #4a4e69;
+	--light: #9a8c98;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	font-family: 'Kanit', sans-serif;
+	background: var(--light);
+	background: linear-gradient(180deg, var(--light) 0%, var(--middle) 100%);
+	color: var(--dark);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.watch {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 300px var(--dark);
+	border-radius: 50px;
+	margin: auto 1em;
+	overflow: hidden;
+
+	&__info,
+	&__color {
+		position: absolute;
+		top: 1.5rem;
+		right: 1.5rem;
+		color: var(--dark);
+		font-size: 2.8rem;
+		cursor: pointer;
+		padding: 0.25em 0.5em;
+		transition: scale .3s;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+
+	&__color {
+		right: 5rem;
+	}
+
+	&__icon {
+		font-size: 5.2rem;
+		background-color: none;
+		color: var(--dark);
+		border: none;
+	}
+
+	&__btn {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5em 1em;
+		margin-top: 0.5em;
+		transition: scale .3s;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+
+		&-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 1em;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__time {
+		font-size: 8rem;
+		font-weight: 700;
+		padding-top: 0.5em;
+
+		&--last {
+			font-size: 2rem;
+			visibility: hidden;
+		}
+	}
+
+	&__themes {
+		position: absolute;
+		top: -450px;
+		height: 35%;
+		width: 100%;
+		border-radius: 50px;
+		background-color: var(--light);
+		transition: top 0.3s;
+		padding: 1em 4em;
+		box-shadow: 0px 5px 15px var(--middle);
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		transition: top 1s;
+
+		&--slide {
+			top: 0;
+		}
+	}
+
+	&__theme {
+		width: 30px;
+		height: 30px;
+		border-radius: 50px;
+
+		&--default {
+			background-color: #4a4e69;
+			box-shadow: 0 0 5px #4a4e69;
+			&:hover {
+				box-shadow: 0 0 15px #4a4e69;
+			}
+		}
+		&--one {
+			background-color: #415a77;
+			box-shadow: 0 0 5px #415a77;
+			&:hover {
+				box-shadow: 0 0 15px #415a77;
+			}
+		}
+		&--two {
+			background-color: #216869;
+			box-shadow: 0 0 5px #216869;
+			&:hover {
+				box-shadow: 0 0 15px #216869;
+			}
+		}
+		&--three {
+			background-color: #5e0b15;
+			box-shadow: 0 0 5px #5e0b15;
+			&:hover {
+				box-shadow: 0 0 15px #5e0b15;
+			}
+		}
+		&--four {
+			background-color: #595959;
+			box-shadow: 0 0 5px #595959;
+			&:hover {
+				box-shadow: 0 0 15px #595959;
+			}
+		}
+	}
+}
+
+.archive {
+	font-family: 'Kanit', sans-serif;
+	font-size: 2.4rem;
+	text-transform: uppercase;
+	padding: 0.5em 1em;
+	width: 100%;
+	max-width: 300px;
+	color: var(--light);
+	background-color: var(--dark);
+	border-radius: 50px;
+}
+
+.time-list {
+	list-style: none;
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	margin: 1em 0;
+
+	&-result {
+		font-weight: 700;
+	}
+}
+
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	transform: translate(-50%, -50%);
+	padding: 2.5em 3.5em;
+	border-radius: 50px;
+	background-color: var(--light);
+
+	&__title {
+		font-size: 2.2rem;
+	}
+
+	&__text {
+		font-size: 1.6rem;
+		&:last-of-type {
+			margin-top: 0.5em;
+		}
+	}
+
+	&__icon {
+		font-size: 1.8rem;
+		margin-top: 0.5em;
+		padding: 0.5rem 0;
+	}
+
+	&__btn--close {
+		font-family: 'Kanit', sans-serif;
+		font-size: 2rem;
+		padding: 0.5em 1em;
+		text-transform: uppercase;
+		width: 100%;
+		border-radius: 50px;
+		color: var(--light);
+		background-color: var(--dark);
+		border: none;
+		cursor: pointer;
+		margin-top: 1em;
+		transition: scale .3s;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+
+	&--shadow {
+		opacity: 0;
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.75);
+	}
+
+	&--animation {
+		animation: showModal 0.5s forwards;
+	}
+}
+
+// ----------------------------------------------- > ANIMATION < -----------------------------------------------
+
+@keyframes showModal {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+// ----------------------------------------------- > MEDIA < -----------------------------------------------
+
+@media (min-width: 576px) {
+	.watch {
+		width: 70%;
+
+		&__color {
+			top: 5rem;
+			right: 1.5rem;
+		}
+
+		&__themes {
+			height: 16%;
+			max-width: 60%;
+			padding: 1em 2em;
+	
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.watch {
+		width: 65%;
+		&__time {
+			font-size: 10rem;
+
+			&--last {
+				font-size: 2.4rem;
+			}
+		}
+
+		&__theme {
+			width: 35px;
+			height: 35px;
+		}
+	}
+	.modal {
+		padding: 5em 7em;
+		display: flex;
+		flex-direction: column;
+		max-width: 900px;
+
+		&__title {
+			font-size: 3.4rem;
+		}
+
+		&__text {
+			font-size: 2.2rem;
+		}
+
+		&__icon {
+			font-size: 3.5rem;
+			margin-top: 0.5em;
+		}
+
+		&__btn--close {
+			margin: 1em auto;
+			max-width: 300px;
+			font-size: 2.2rem;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.watch {
+		width: 40%;
+	}
+}
