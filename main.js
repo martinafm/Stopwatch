@@ -36,10 +36,10 @@ let root = document.documentElement
 const handleStart = () => {
 	if (flag) {
 		countMiliSec = setInterval(() => {
-			if (miliseconds <= 9) {
+			if (miliseconds < 9) {
 				miliseconds++
 				miliSec.textContent = `0${miliseconds}`
-			} else if (miliseconds > 9 && miliseconds < 99) {
+			} else if (miliseconds >= 9 && miliseconds < 99) {
 				miliseconds++
 				miliSec.textContent = `${miliseconds}`
 			} else {
