@@ -6,15 +6,19 @@ const archiveBtn = document.querySelector('.archive')
 const closeModalBtn = document.querySelector('.modal__btn--close')
 
 const stopWatch = document.querySelector('.watch__time')
+const min = document.querySelector('.minutes')
+const sec = document.querySelector('.seconds')
+const miliSec = document.querySelector('.miliseconds')
 const lastTime = document.querySelector('.watch__time--last')
 const info = document.querySelector('.watch__info')
 const modalShadow = document.querySelector('.modal--shadow')
 const timeList = document.querySelector('.time-list')
-const colorsBox = document.querySelector('.watch__themes')
 
 let countTime
+let countMiliSec
 let seconds = 0
 let minutes = 0
+let miliseconds = 0
 
 let flag = true
 let timeArr = []
@@ -29,20 +33,35 @@ const fourColor = document.querySelector('.watch__theme--four')
 const allColors = colorPanel.querySelectorAll('.watch__theme')
 let root = document.documentElement
 
-
 const handleStart = () => {
 	if (flag) {
+		countMiliSec = setInterval(() => {
+			if (miliseconds <= 9) {
+				miliseconds++
+				miliSec.textContent = `0${miliseconds}`
+			} else if (miliseconds > 9 && miliseconds < 99) {
+				miliseconds++
+				miliSec.textContent = `${miliseconds}`
+			} else {
+				miliseconds = 0
+				miliSec.textContent = `00`
+			}
+		}, 10)
+
 		countTime = setInterval(() => {
 			if (seconds < 9) {
 				seconds++
-				stopWatch.textContent = `${minutes}:0${seconds}`
+				min.textContent = `0${minutes}`
+				sec.textContent = `0${seconds}`
 			} else if (seconds >= 9 && seconds < 59) {
 				seconds++
-				stopWatch.textContent = `${minutes}:${seconds}`
+				min.textContent = `0${minutes}`
+				sec.textContent = `${seconds}`
 			} else {
 				minutes++
 				seconds = 0
-				stopWatch.textContent = `${minutes}:0${seconds}`
+				min.textContent = `0${minutes}`
+				sec.textContent = `0${seconds}`
 			}
 		}, 1000)
 	}
@@ -52,12 +71,18 @@ const handleStart = () => {
 const handleStop = () => {
 	lastTime.textContent = `Last time: ${stopWatch.textContent}`
 
-	if (stopWatch.textContent !== '0:00') {
+	if (stopWatch.textContent !== '0:00:00') {
 		lastTime.style.visibility = 'visible'
 		timeArr.push(stopWatch.textContent)
 	}
 
 	clearData()
+	flag = true
+}
+
+const handlePause = () => {
+	clearInterval(countTime)
+	clearInterval(countMiliSec)
 	flag = true
 }
 
@@ -69,10 +94,14 @@ const resetAll = () => {
 
 const clearData = () => {
 	clearInterval(countTime)
-	stopWatch.textContent = '00:00'
+	clearInterval(countMiliSec)
+	min.textContent = '00'
+	sec.textContent = '00'
+	miliSec.textContent = '00'
 	timeList.textContent = ''
 	seconds = 0
 	minutes = 0
+	miliseconds = 0
 }
 
 const showInfo = () => {
@@ -96,12 +125,8 @@ const handleArchive = () => {
 	})
 }
 
-
 startBtn.addEventListener('click', handleStart)
-pauseBtn.addEventListener(
-	'click',
-	() => clearInterval(countTime)(flag = true)
-)
+pauseBtn.addEventListener('click', handlePause)
 stopBtn.addEventListener('click', handleStop)
 resetBtn.addEventListener('click', resetAll)
 archiveBtn.addEventListener('click', handleArchive)
@@ -112,31 +137,36 @@ window.addEventListener('click', (e) =>
 	e.target === modalShadow ? showInfo() : false
 )
 
-
-palette.addEventListener('click', () => colorPanel.classList.toggle('watch__themes--slide'))
-allColors.forEach(color => color.addEventListener('click', () => colorPanel.classList.remove('watch__themes--slide')))
+palette.addEventListener('click', () =>
+	colorPanel.classList.toggle('watch__themes--slide')
+)
+allColors.forEach((color) =>
+	color.addEventListener('click', () =>
+		colorPanel.classList.remove('watch__themes--slide')
+	)
+)
 defaultColor.addEventListener('click', () => {
-	root.style.setProperty('--dark','#22223b' )
-	root.style.setProperty('--middle', '#4a4e69' )
+	root.style.setProperty('--dark', '#22223b')
+	root.style.setProperty('--middle', '#4a4e69')
 	root.style.setProperty('--light', '#9a8c98')
 })
 oneColor.addEventListener('click', () => {
-	root.style.setProperty('--dark','#0d1b2a' )
-	root.style.setProperty('--middle', '#415a77' )
+	root.style.setProperty('--dark', '#0d1b2a')
+	root.style.setProperty('--middle', '#415a77')
 	root.style.setProperty('--light', '#778da9')
 })
 twoColor.addEventListener('click', () => {
-	root.style.setProperty('--dark','#216869' )
-	root.style.setProperty('--middle', '#dde7c7' )
+	root.style.setProperty('--dark', '#216869')
+	root.style.setProperty('--middle', '#dde7c7')
 	root.style.setProperty('--light', '#edeec9')
 })
 threeColor.addEventListener('click', () => {
-	root.style.setProperty('--dark','#5e0b15' )
-	root.style.setProperty('--middle', '#8c7a6b' )
+	root.style.setProperty('--dark', '#5e0b15')
+	root.style.setProperty('--middle', '#8c7a6b')
 	root.style.setProperty('--light', '#d9cab3')
 })
 fourColor.addEventListener('click', () => {
-	root.style.setProperty('--dark','#595959' )
-	root.style.setProperty('--middle', '#a5a5a5' )
+	root.style.setProperty('--dark', '#595959')
+	root.style.setProperty('--middle', '#a5a5a5')
 	root.style.setProperty('--light', '#f2f2f2')
 })

@@ -45,7 +45,7 @@ body {
 		font-size: 2.8rem;
 		cursor: pointer;
 		padding: 0.25em 0.5em;
-		transition: scale .3s;
+		transition: scale 0.3s;
 
 		&:hover {
 			transform: scale(1.05);
@@ -69,7 +69,7 @@ body {
 		cursor: pointer;
 		padding: 0.5em 1em;
 		margin-top: 0.5em;
-		transition: scale .3s;
+		transition: scale 0.3s;
 
 		&:hover {
 			transform: scale(1.05);
@@ -85,9 +85,16 @@ body {
 	}
 
 	&__time {
-		font-size: 8rem;
+		font-size: 6rem;
 		font-weight: 700;
-		padding-top: 0.5em;
+		padding-top: 1em;
+		display: flex;
+		& > span {
+			margin: 0 0.05em;
+			display: block;
+			width: 80px;
+			height: 80px;
+		}
 
 		&--last {
 			font-size: 2rem;
@@ -220,7 +227,7 @@ body {
 		border: none;
 		cursor: pointer;
 		margin-top: 1em;
-		transition: scale .3s;
+		transition: scale 0.3s;
 
 		&:hover {
 			transform: scale(1.05);
@@ -240,6 +247,7 @@ body {
 		animation: showModal 0.5s forwards;
 	}
 }
+
 
 // ----------------------------------------------- > ANIMATION < -----------------------------------------------
 
@@ -266,7 +274,6 @@ body {
 			height: 16%;
 			max-width: 60%;
 			padding: 1em 2em;
-	
 		}
 	}
 }
@@ -276,6 +283,12 @@ body {
 		width: 65%;
 		&__time {
 			font-size: 10rem;
+				& > span {
+					margin: 0 0.1em;
+					display: block;
+					width: 130px;
+					height: 130px;
+				}
 
 			&--last {
 				font-size: 2.4rem;
@@ -316,6 +329,6 @@ body {
 
 @media (min-width: 992px) {
 	.watch {
-		width: 40%;
+		width: 50%;
 	}
 }

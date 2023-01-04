@@ -77,9 +77,16 @@ body {
   flex-wrap: wrap;
 }
 .watch__time {
-  font-size: 8rem;
+  font-size: 6rem;
   font-weight: 700;
-  padding-top: 0.5em;
+  padding-top: 1em;
+  display: flex;
+}
+.watch__time > span {
+  margin: 0 0.05em;
+  display: block;
+  width: 80px;
+  height: 80px;
 }
 .watch__time--last {
   font-size: 2rem;
@@ -258,6 +265,12 @@ body {
   .watch__time {
     font-size: 10rem;
   }
+  .watch__time > span {
+    margin: 0 0.1em;
+    display: block;
+    width: 130px;
+    height: 130px;
+  }
   .watch__time--last {
     font-size: 2.4rem;
   }
@@ -289,6 +302,6 @@ body {
 }
 @media (min-width: 992px) {
   .watch {
-    width: 40%;
+    width: 50%;
   }
 }/*# sourceMappingURL=main.css.map */
